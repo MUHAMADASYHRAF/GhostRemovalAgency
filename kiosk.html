@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Calculate supplies for a fictional paranormal response team.">
+
+    <title>Spectre Solutions | Resource Kiosk</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- External JavaScript -->
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <a class="brand" href="index.html">
+            <span class="brand-mark">✦</span>
+            SPECTRE
+            <span>SOLUTIONS</span>
+        </a>
+
+        <nav aria-label="Main navigation">
+            <a href="index.html">Founder</a>
+            <a class="active" href="kiosk.html">Resource Kiosk</a>
+        </nav>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="kiosk-main">
+
+        <!-- INTRODUCTION -->
+        <section class="kiosk-intro">
+
+            <p class="eyebrow">FIELD OPERATIONS / RESOURCE DESK</p>
+
+            <h1>
+                Prepare your<br>
+                <span>response team.</span>
+            </h1>
+
+            <p>
+                Enter your team size and mission duration.
+                The planner estimates the supplies required
+                for your fictional ghost-removal operation.
+            </p>
+
+        </section>
+
+
+        <!-- PLANNER SECTION -->
+        <section class="planner-grid">
+
+            <!-- INPUT FORM -->
+            <form id="resourceForm" class="planner-card" novalidate>
+
+                <div class="card-top">
+
+                    <div>
+                        <p class="eyebrow">MISSION DETAILS</p>
+                        <h2>Resource planner</h2>
+                    </div>
+
+                    <span class="status-dot">READY</span>
+
+                </div>
+
+
+                <!-- CUSTOMER NAME -->
+                <label for="customerName">
+                    Customer name
+                </label>
+
+                <input
+                    id="customerName"
+                    name="customerName"
+                    type="text"
+                    placeholder="e.g. Alex Tan"
+                    autocomplete="name"
+                >
+
+                <small class="field-error" id="nameError"></small>
+
+
+                <!-- CUSTOMER EMAIL -->
+                <label for="customerEmail">
+                    Email address
+                </label>
+
+                <input
+                    id="customerEmail"
+                    name="customerEmail"
+                    type="email"
+                    placeholder="name@example.com"
+                    autocomplete="email"
+                >
+
+                <small class="field-error" id="emailError"></small>
+
+
+                <!-- TEAM MEMBERS AND MISSION DAYS -->
+                <div class="input-row">
+
+                    <div>
+
+                        <label for="users">
+                            Number of team members
+                        </label>
+
+                        <input
+                            id="users"
+                            name="users"
+                            type="number"
+                            min="1"
+                            max="100"
+                            step="1"
+                            placeholder="e.g. 4"
+                        >
+
+                        <small class="field-error" id="usersError"></small>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="days">
+                            Mission duration (days)
+                        </label>
+
+                        <input
+                            id="days"
+                            name="days"
+                            type="number"
+                            min="1"
+                            max="30"
+                            step="1"
+                            placeholder="e.g. 3"
+                        >
+
+                        <small class="field-error" id="daysError"></small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OPTIONAL BACKUP KIT -->
+                <label class="check-line">
+
+                    <input
+                        id="backupKit"
+                        name="backupKit"
+                        type="checkbox"
+                    >
+
+                    Include one backup equipment kit per team member
+
+                </label>
+
+
+                <!-- SUBMIT BUTTON -->
+                <button
+                    class="button submit-button"
+                    type="submit"
+                >
+                    Calculate supplies <span>↗</span>
+                </button>
+
+
+                <p class="form-note">
+                    Valid range: 1–100 team members and 1–30 days.
+                </p>
+
+            </form>
+
+
+            <!-- PLANNING RULES -->
+            <aside class="rules-card">
+
+                <p class="eyebrow">PLANNING RULES</p>
+
+                <h2>How it works</h2>
+
+                <p>
+                    These fictional planning rates are used
+                    by the calculator:
+                </p>
+
+
+                <ul class="rate-list">
+
+                    <li>
+                        <span>EMF detector</span>
+                        <strong>1 per team member</strong>
+                    </li>
+
+                    <li>
+                        <span>Protective suit</span>
+                        <strong>1 per person</strong>
+                    </li>
+
+                    <li>
+                        <span>Salt packs</span>
+                        <strong>2 per person / day</strong>
+                    </li>
+
+                    <li>
+                        <span>Flashlights</span>
+                        <strong>1 per person</strong>
+                    </li>
+
+                    <li>
+                        <span>Backup kit (optional)</span>
+                        <strong>1 per person</strong>
+                    </li>
+
+                </ul>
+
+
+                <div class="formula">
+
+                    <small>CORE FORMULA</small>
+
+                    <p>
+                        Daily supplies = rate × team members × days
+                    </p>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+
+        <!-- CALCULATION RESULTS -->
+        <section
+            id="result"
+            class="result-card"
+            aria-live="polite"
+            hidden
+        >
+
+            <p class="eyebrow">
+                MISSION RESOURCE SUMMARY
+            </p>
+
+            <h2>Calculation complete</h2>
+
+            <p id="resultIntro"></p>
+
+            <div id="resultContent"></div>
+
+            <button
+                id="resetButton"
+                class="button button-secondary"
+                type="button"
+            >
+                Plan another mission
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <span>© 2026 SPECTRE SOLUTIONS</span>
+
+        <span>FICTIONAL BUSINESS • ICT600</span>
+
+    </footer>
+
+</body>
+
+</html>
