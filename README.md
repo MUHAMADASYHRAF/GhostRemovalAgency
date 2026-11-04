@@ -1,2 +1,0 @@
-# GhostRemovalAgency
-ICT600 INDIVIDUAL ASSIGNMENT
